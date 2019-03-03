@@ -27,6 +27,7 @@ class Contributions extends Component {
 			})
 		})
 	} */
+
 	componentDidMount() {
 		//destructed way to write. 
 		const { questionId } = this.props;

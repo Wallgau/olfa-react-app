@@ -11,6 +11,25 @@ class Form extends Component {
 			userAnswer: ''
 		}
 	}
+	renderButton = (props) => {
+		if (this.props.canSubmitAnswer) {
+			return (
+				<button
+					type="submit"
+					name="submitButton"
+					onClick={this.handleSubmit}
+					placefolder="Contribute">
+					Contribute
+					</button>
+			)
+		} else {
+			return (
+				<p className="userAlert">
+					This question had too much success, we do not accept any answer anymore
+				</p>
+			)
+		}
+	}
 
 	handleChange = (event) => {
 		//this argument pass to the function is the event (a change in the input)
@@ -50,14 +69,7 @@ class Form extends Component {
 					// if not, the input kept the value on submit
 					value={this.state.userAnswer} />
 				<label htmlFor="userAnswer"></label>
-				<button
-					type="submit"
-					name="submitButton"
-					onClick={this.handleSubmit}
-					placefolder="Contribute">
-					Contribute
-				</button>
-
+				{this.renderButton()}
 			</form>
 		)
 	}
