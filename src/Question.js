@@ -35,9 +35,10 @@ class Question extends Component {
 			<div>
 				<ul>
 					{this.state.question.map((item, index) => {
+						console.log(this.state.question)
 						// Need to update the correct question with the answer in firebase
 						// I have to pass the questionId here because I don't know it in <Form>
-						const questionId = `question${index + 1}`
+						const questionId = `question${index + 1}`;
 						/* const uniqueQuestion = item[0] */
 						return (
 							<section key={`question-${index}`} className="sectionQuestion">
@@ -47,7 +48,8 @@ class Question extends Component {
 									</li>
 									{/* Need to pass the questionId = props */}
 									< Form questionId={questionId} />
-									< Contributions />
+									< Contributions questionId={questionId} />
+
 								</div>
 							</section>
 						)

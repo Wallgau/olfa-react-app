@@ -3,14 +3,14 @@ import firebase from './firebase.js';
 
 
 class Contributions extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
-			userAnswer: [],
+			userAnswers: [],
 		}
 	}
 
-	componentDidMount() {
+	/* componentDidMount() {
 		const dbRef = firebase.database().ref(`${this.props.questionId}/userAnswer`);
 
 		const newState = []
@@ -26,6 +26,25 @@ class Contributions extends Component {
 				userAnswer: newState
 			})
 		})
+	} */
+	componentDidMount() {
+		//destructed way to write. 
+		const { questionId } = this.props;
+		const dbRef = firebase.database().ref(`${questionId}/userAnswers`);
+
+		const newState = []
+		dbRef.on('value', (userAnswer) => {
+			const data = userAnswer.val();
+			for (let key in data) {
+				//and pushes that object to the newState array
+				newState.push(data[key])
+			}
+
+			this.setState({
+				userAnswers: newState
+			})
+			console.log(this.state)
+		})
 	}
 
 	render() {
@@ -34,22 +53,21 @@ class Contributions extends Component {
 
 
 				<ul>
-					{this.state.userAnswer.map((item, index) => {
-						// Need to update the correct question with the answer in firebase
-						// I have to pass the userAnswersId here because I don't know it in <Contributions>
-						const userAnswerId = `question.userAnswers${index + 1}`;
+					{this.state.userAnswers.map((answer, index) => {
+						console.log(answer)
 
 						return (
-							<section key={`question.userAnswers-${index}`} className="sectionAnswers">
+							<div key={`question.userAnswers-${index}`} className="sectionAnswers">
 								<div className="wrapper">
 									<li>
-										<p key={`index`}>{item.userAnswers}</p>
+										<p key={`index`}>{answer.userAnswer}</p>
 									</li>
 								</div>
-							</section>
+							</div>
 						)
 					})
 					}
+
 				</ul>
 			</div >
 		)
