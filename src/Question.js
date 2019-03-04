@@ -3,6 +3,7 @@ import firebase from './firebase.js';
 import Form from './Form.js';
 /* import Submit from './Submit' */
 import Contributions from './Contributions.js';
+import Vote from './Vote.js';
 
 class Question extends Component {
 	constructor() {
@@ -55,6 +56,7 @@ class Question extends Component {
 									{/* Need to pass the questionId = props */}
 									<Form questionId={questionId} canSubmitAnswer={canSubmitAnswer} />
 									<Contributions questionId={questionId} />
+									<Vote questionId={questionId} />
 								</div>
 
 							</section>
