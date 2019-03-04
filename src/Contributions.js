@@ -11,6 +11,7 @@ class Contributions extends Component {
 	}
 
 	componentDidMount() {
+		//we get the props questionId from Question Component
 		const { questionId } = this.props;
 		const dbRef = firebase.database().ref(`${questionId}/userAnswers`);
 
