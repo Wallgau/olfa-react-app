@@ -13,6 +13,7 @@ class Form extends Component {
 		if (this.props.canSubmitAnswer) {
 			return (
 				<button
+					aria-label="contribute"
 					type="submit"
 					name="submitButton"
 					onClick={this.handleSubmit}
@@ -69,7 +70,7 @@ class Form extends Component {
 					// need the value to be the state so I can reset it to nothing.
 					// if not, the input kept the value on submit
 					value={this.state.userAnswer} />
-				<label htmlFor="userAnswer"></label>
+				<label htmlFor="userAnswer" aria-label="answers"></label>
 				{this.renderButton()}
 			</form>
 		)

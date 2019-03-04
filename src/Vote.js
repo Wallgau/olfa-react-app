@@ -28,7 +28,7 @@ class Vote extends Component {
 		const { count } = this.state
 		return (
 			<div>
-				<i className="far fa-plus-square" onClick={this.handleClick}> <span>Upvote Answer: {count}</span></i>
+				<i className="far fa-plus-square" aria-hidden="true" onClick={this.handleClick}> <span>Upvote Answer: {count}</span></i>
 			</div>
 		)
 	}
