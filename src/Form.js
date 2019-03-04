@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Question from './Question.js';
 import firebase from './firebase.js';
 
-
-
 class Form extends Component {
 	constructor(props) {
 		super(props);
@@ -68,7 +66,7 @@ class Form extends Component {
 				<textarea
 					rows='10'
 					columns='50'
-					name="userAnswers"
+					name="userAnswer"
 					onChange={this.handleChange}
 					placefolder="contribute to the community by answering here!"
 					// need the value to be the state so I can reset it to nothing.
