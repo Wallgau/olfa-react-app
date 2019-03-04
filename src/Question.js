@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import firebase from './firebase.js';
 import Form from './Form.js';
-/* import Submit from './Submit' */
 import Contributions from './Contributions.js';
 import Vote from './Vote.js';
 
@@ -12,7 +11,6 @@ class Question extends Component {
 			question: [],
 		}
 	}
-
 	componentDidMount() {
 		const dbRef = firebase.database().ref();
 
@@ -21,17 +19,13 @@ class Question extends Component {
 			const data = question.val();
 			for (let key in data) {
 				//and pushes that object to the newState arrayn
-
 				newState.push(data[key])
-
 			}
-
 			this.setState({
 				question: newState
 			})
 		})
 	}
-
 	render() {
 		return (
 			<div>
@@ -45,8 +39,8 @@ class Question extends Component {
 						if (userAnswers) {
 							numberOfAnswers = Object.keys(userAnswers).length;
 						}
+						//to limit the number of answer for each question, the user can answer to the question who had been answered less than 10 times.
 						const canSubmitAnswer = numberOfAnswers < 10;
-
 						return (
 							<section key={`question-${index}`} className="sectionQuestion">
 								<div className="wrapper">
@@ -56,9 +50,7 @@ class Question extends Component {
 									{/* Need to pass the questionId = props */}
 									<Form questionId={questionId} canSubmitAnswer={canSubmitAnswer} />
 									<Contributions questionId={questionId} />
-
 								</div>
-
 							</section>
 						)
 					})
@@ -68,5 +60,4 @@ class Question extends Component {
 		)
 	}
 }
-
 export default Question;

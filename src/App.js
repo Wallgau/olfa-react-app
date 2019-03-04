@@ -3,6 +3,7 @@ import firebase from './firebase.js';
 import Question from './Question.js';
 import Header from './Header.js';
 import Footer from './Footer.js'
+import './App.css'
 
 class App extends Component {
 
@@ -16,5 +17,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;

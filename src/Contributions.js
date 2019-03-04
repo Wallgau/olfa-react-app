@@ -9,12 +9,10 @@ class Contributions extends Component {
 			userAnswers: [],
 		}
 	}
-
 	componentDidMount() {
 		//we get the props questionId from Question Component
 		const { questionId } = this.props;
 		const dbRef = firebase.database().ref(`${questionId}/userAnswers`);
-
 		dbRef.on('value', (userAnswer) => {
 			const newState = []
 			const data = userAnswer.val();
@@ -27,7 +25,6 @@ class Contributions extends Component {
 			})
 		})
 	}
-
 	render() {
 		return (
 			<div>
@@ -53,5 +50,4 @@ class Contributions extends Component {
 		)
 	}
 }
-
 export default Contributions;

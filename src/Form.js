@@ -28,7 +28,6 @@ class Form extends Component {
 			)
 		}
 	}
-
 	handleChange = (event) => {
 		//this argument pass to the function is the event (a change in the input)
 		//we set state using that input's name and value
@@ -37,7 +36,6 @@ class Form extends Component {
 			userAnswer: event.target.value
 		})
 	}
-
 	handleSubmit = (event) => {
 		event.preventDefault();
 		//Want to prevent empty response
@@ -46,7 +44,6 @@ class Form extends Component {
 			const answerData = {
 				userAnswer: this.state.userAnswer
 			};
-
 			// I need the questionId from Question to know where to put the answer
 			// I want all the answer to be in the same object in firebase
 			// I am passing a path to make sure they are at the same place
@@ -78,5 +75,4 @@ class Form extends Component {
 		)
 	}
 }
-
 export default Form;
