@@ -35,7 +35,6 @@ class Form extends Component {
 		//this argument pass to the function is the event (a change in the input)
 		//we set state using that input's name and value
 		//(this makes the function reusable)
-		console.log(event.target.name, event.target.value)
 		this.setState({
 			userAnswer: event.target.value
 		})

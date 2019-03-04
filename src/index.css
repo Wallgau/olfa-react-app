@@ -20,6 +20,7 @@ p{
   font-family: 'Playfair Display', serif;
   font-size: 1.3rem;
   text-align:left;
+  line-height:1.6;
 
 }
 ul{
@@ -48,14 +49,18 @@ button{
   font-weight: 700;
   padding: 3%;
   border-radius: 5px;
-  margin:5%;; 
+  margin-top:5%;; 
   background:slategray;
   color: white;
+  font-size: 1.2rem;
 }
 .sectionQuestion{
   border-bottom: 1px solid black;
   padding: 5%;
   margin: 0 auto;
+}
+.wrapper .displayedQuestion{
+  color:black;
 }
 header{
   font-family: 'Poppins', serif;
@@ -67,4 +72,39 @@ header{
 }
 .pHeader{
   text-align:center;
+}
+.sectionQuestion p{
+  color:darkblue;
+  margin: 10% 0;
+  
+}
+.userAlert{
+  color:red;
+}
+footer p{
+  margin:0;
+  background-color:black;
+  color:white;
+  text-align:center;
+}
+button:focus{
+  background:yellow;
+}
+button:active{
+  background-color:slateblue;
+}
+textarea:focus{
+  background-color:yellow;
+}
+i.far{
+  font-size: 2rem;
+  display:flex;
+  flex-direction:column;
+}
+span{
+  margin: 3%;
+}
+.fa-plus-square:before {
+    content: "\f0fe";
+    font-size: 3rem;
 }

@@ -21,9 +21,9 @@ class Question extends Component {
 			const data = question.val();
 			for (let key in data) {
 				//and pushes that object to the newState arrayn
-				console.log('first', newState)
+
 				newState.push(data[key])
-				console.log('second', newState)
+
 			}
 
 			this.setState({
@@ -51,7 +51,7 @@ class Question extends Component {
 							<section key={`question-${index}`} className="sectionQuestion">
 								<div className="wrapper">
 									<li key={`index`}>
-										<p>{item.question}</p>
+										<p class="displayedQuestion">{item.question}</p>
 									</li>
 									{/* Need to pass the questionId = props */}
 									<Form questionId={questionId} canSubmitAnswer={canSubmitAnswer} />
