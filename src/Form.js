@@ -43,17 +43,24 @@ class Form extends Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-		// I am making sure the object I pass is always the same format
-		const answerData = {
-			userAnswer: this.state.userAnswer
-		};
-		// I need the questionId from Question to know where to put the answer
-		// I want all the answer to be in the same object in firebase
-		// I am passing a path to make sure they are at the same place
-		const firebaseRef = firebase.database().ref(`${this.props.questionId}/userAnswers`);
-		firebaseRef.push(answerData);
-		// Need to reset the value to nothing when the answer has been submitted
-		this.setState({ userAnswer: '' });
+		//Want to prevent empty response
+		if (this.state.userAnswer.length > 0) {
+			// I am making sure the object I pass is always the same format
+			const answerData = {
+				userAnswer: this.state.userAnswer
+			};
+
+			// I need the questionId from Question to know where to put the answer
+			// I want all the answer to be in the same object in firebase
+			// I am passing a path to make sure they are at the same place
+			const firebaseRef = firebase.database().ref(`${this.props.questionId}/userAnswers`);
+			firebaseRef.push(answerData);
+			// Need to reset the value to nothing when the answer has been submitted
+			this.setState({ userAnswer: '' })
+		}
+		else {
+			alert('You need to fill up your answer before submitting it');
+		}
 	}
 
 	render() {
@@ -75,4 +82,4 @@ class Form extends Component {
 	}
 }
 
-export default Form
+export default Form;

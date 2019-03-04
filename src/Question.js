@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import firebase from './firebase.js';
 import Form from './Form.js';
-import Contributions from './Contributions.js';
 /* import Submit from './Submit' */
+import Contributions from './Contributions.js';
 
 class Question extends Component {
 	constructor() {
@@ -14,15 +14,16 @@ class Question extends Component {
 
 	componentDidMount() {
 		const dbRef = firebase.database().ref();
-		console.log(firebase.database().ref())
-		const newState = []
+
 		dbRef.on('value', (question) => {
+			const newState = [];
 			const data = question.val();
 			for (let key in data) {
 				//and pushes that object to the newState arrayn
+				console.log('first', newState)
 				newState.push(data[key])
+				console.log('second', newState)
 			}
-			console.log(newState)
 
 			this.setState({
 				question: newState
@@ -44,6 +45,7 @@ class Question extends Component {
 							numberOfAnswers = Object.keys(userAnswers).length;
 						}
 						const canSubmitAnswer = numberOfAnswers < 10;
+
 						return (
 							<section key={`question-${index}`} className="sectionQuestion">
 								<div className="wrapper">
