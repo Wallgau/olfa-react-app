@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from './firebase.js';
-
+import Vote from './Vote';
 
 class Contributions extends Component {
 	constructor(props) {
@@ -19,9 +19,8 @@ class Contributions extends Component {
 			const data = userAnswer.val();
 			for (let key in data) {
 				//and pushes that object to the newState array
-				newState.push(data[key])
+				newState.push({ [key]: data[key] });
 			}
-
 			this.setState({
 				userAnswers: newState
 			})
@@ -33,16 +32,21 @@ class Contributions extends Component {
 			<div>
 				<ul>
 					{this.state.userAnswers.map((answer, index) => {
+						// Need to get the key of the object for each question
+						let answerId = Object.keys(answer);
+						// Should only have one keys
+						answerId = answerId[0];
 						// Need to update the correct question with the answer in firebase
 						// I have to pass the userAnswersId here because I don't know it in <Contributions>
-
 						return (
 							<li key={`question.userAnswers-${index}`} className="sectionAnswers">
-								<p>{answer.userAnswer}</p>
+								<p>{answer[answerId].userAnswer}</p>
+
+								<Vote questionId={this.props.questionId} answerId={answerId} count={answer[answerId].count} />
+
 							</li>
 						)
-					})
-					}
+					})}
 				</ul>
 			</div >
 		)

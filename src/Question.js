@@ -56,7 +56,7 @@ class Question extends Component {
 									{/* Need to pass the questionId = props */}
 									<Form questionId={questionId} canSubmitAnswer={canSubmitAnswer} />
 									<Contributions questionId={questionId} />
-									<Vote questionId={questionId} />
+
 								</div>
 
 							</section>
